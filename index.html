@@ -1,77 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A. Halim Mahfudz - Personal Webpage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #003366;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        a {
-            color: #003366;
-        }
-    </style>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>portfolio</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "1066016611";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>A. Halim Mahfudz</h1>
-    </header>
-
-    <div class="container">
-        <section class="section">
-            <h2>About Me</h2>
-            <p>Hello! I am A. Halim Mahfudz. My work and interests span various areas including Islam, halal issues, education, communication, public relations, and performing arts. I am passionate about promoting understanding and knowledge in these fields.</p>
-        </section>
-
-        <section class="section">
-            <h2>Islam & Halal Issues</h2>
-            <p>I am dedicated to exploring and educating others about Islamic principles and halal practices. This involves discussing various aspects of halal living and how they intersect with daily life.</p>
-        </section>
-
-        <section class="section">
-            <h2>Education</h2>
-            <p>Education is a key focus for me. I work on various initiatives aimed at enhancing educational experiences and opportunities. My approach is to integrate effective communication and PR strategies to reach and impact a broader audience.</p>
-        </section>
-
-        <section class="section">
-            <h2>Performing Arts</h2>
-            <p>Performing arts are one of my hobbies and passions. I enjoy engaging in various forms of performance and exploring how they can be used to express ideas and connect with audiences.</p>
-        </section>
-    </div>
-
-    <footer>
-        <p>Contact: <a href="mailto:contact@ahalimmahfudz.com">contact@ahalimmahfudz.com</a></p>
-    </footer>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
