@@ -1,59 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>portfolio</title>
-  <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "1615074536";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Jalan Interaktif Belajar Flutter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Blue Accent -->
+    <!-- Application Structure Plan: Aplikasi ini dirancang sebagai peta jalan interaktif non-linear. Struktur utamanya adalah sebuah "timeline" visual yang merepresentasikan 4 level pembelajaran. Pengguna bisa mengklik level mana pun untuk menampilkan detailnya secara dinamis di area konten utama. Pendekatan ini dipilih karena mengubah presentasi yang linear menjadi pengalaman eksplorasi yang dipersonalisasi. Pengguna bisa langsung melompat ke level yang relevan bagi mereka, tanpa harus menggulir melewati informasi yang tidak dibutuhkan. Ini meningkatkan kegunaan dan keterlibatan pengguna secara signifikan dibandingkan dengan halaman statis biasa. Bagian pendukung seperti "Mengapa Flutter" dan "Kunci Sukses" disajikan dalam format kartu yang mudah dipindai di awal dan akhir untuk memberikan konteks dan tips praktis. -->
+    <!-- Visualization & Content Choices: 
+        - Peta Perjalanan (Roadmap): Goal=Organize/Change. Method=HTML/CSS/JS. Interaction=Klik untuk menampilkan detail level. Justification=Merepresentasikan "perjalanan" belajar secara visual, lebih intuitif daripada daftar teks.
+        - Kartu Informasi ('Kenapa Flutter', 'Kunci Sukses'): Goal=Inform. Method=Grid kartu dengan ikon Unicode. Interaction=Hover effect. Justification=Memecah informasi menjadi bagian-bagian kecil yang mudah dicerna dan menarik secara visual.
+        - Detail Level Dinamis: Goal=Inform. Method=Blok teks HTML yang ditampilkan/disembunyikan dengan JS. Interaction=Fade-in transition. Justification=Menjaga antarmuka tetap bersih dan fokus pada satu topik pada satu waktu, mencegah pengguna merasa kewalahan.
+        - Chart.js: Tidak digunakan karena data dalam laporan bersifat kualitatif dan struktural. Memaksakan penggunaan grafik (misalnya, bar chart) tidak akan memberikan representasi data yang bermakna dan bisa menyesatkan.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
         }
-      });
-    });
-  </script>
+        .roadmap-connector {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            width: 100%;
+            background-color: #cbd5e1; /* slate-300 */
+            z-index: 0;
+        }
+        .roadmap-item:last-child .roadmap-connector {
+            display: none;
+        }
+        .roadmap-node {
+            transition: all 0.3s ease;
+        }
+        .roadmap-node.active {
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+        }
+        .content-panel {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Header -->
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-2">Jalan Ninja Menjadi Master Flutter</h1>
+            <p class="text-lg md:text-xl text-slate-500">Panduan interaktif dari nol hingga siap bangun aplikasi keren.</p>
+        </header>
+
+        <main>
+            <!-- Section: Kenapa Flutter? -->
+            <section id="why-flutter" class="mb-12 md:mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8 text-slate-800">Kenapa Harus Kenalan dengan Flutter?</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-3">⏱️</div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Hemat Waktu & Tenaga</h3>
+                        <p class="text-slate-600">Satu basis kode untuk Android, iOS, Web, dan Desktop. Seperti punya satu resep untuk berbagai jenis kue.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-3">🎨</div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Tampilan Super Cantik</h3>
+                        <p class="text-slate-600">Mudah membuat desain aplikasi yang modern dan mulus, seolah melukis di kanvas digital.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-3">⚡️</div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Cepat dan Responsif</h3>
+                        <p class="text-slate-600">Aplikasi terasa ringan, gesit, dan memberikan pengalaman pengguna yang menyenangkan.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-3">🌍</div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Komunitas Besar</h3>
+                        <p class="text-slate-600">Didukung oleh Google dan ribuan developer. Anda tidak akan pernah belajar sendirian.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Peta Perjalanan Interaktif -->
+            <section id="roadmap" class="mb-12 md:mb-16">
+                <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">Peta Perjalanan Anda</h2>
+                
+                <!-- Roadmap Navigator -->
+                <div class="w-full max-w-4xl mx-auto mb-8">
+                    <div class="relative flex justify-between items-center">
+                        <div class="roadmap-item relative flex-1 flex flex-col items-center" data-level="1">
+                            <div class="roadmap-node cursor-pointer z-10 w-12 h-12 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center font-bold text-lg">1</div>
+                            <p class="text-center mt-2 font-semibold text-sm md:text-base">Pondasi</p>
+                            <div class="roadmap-connector"></div>
+                        </div>
+                        <div class="roadmap-item relative flex-1 flex flex-col items-center" data-level="2">
+                            <div class="roadmap-node cursor-pointer z-10 w-12 h-12 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center font-bold text-lg">2</div>
+                            <p class="text-center mt-2 font-semibold text-sm md:text-base">Membangun</p>
+                            <div class="roadmap-connector"></div>
+                        </div>
+                        <div class="roadmap-item relative flex-1 flex flex-col items-center" data-level="3">
+                            <div class="roadmap-node cursor-pointer z-10 w-12 h-12 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center font-bold text-lg">3</div>
+                            <p class="text-center mt-2 font-semibold text-sm md:text-base">Profesional</p>
+                            <div class="roadmap-connector"></div>
+                        </div>
+                        <div class="roadmap-item relative flex-1 flex flex-col items-center" data-level="4">
+                            <div class="roadmap-node cursor-pointer z-10 w-12 h-12 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center font-bold text-lg">4</div>
+                            <p class="text-center mt-2 font-semibold text-sm md:text-base">Master</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Display -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 min-h-[300px]">
+                    <div id="content-1" class="content-panel">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Level 1: Memasang Pondasi yang Kokoh</h3>
+                        <p class="text-slate-500 italic mb-4">"Sebelum membangun rumah, kita harus kenal palu, paku, dan cara memakainya."</p>
+                        <h4 class="font-semibold text-lg mb-2">Apa yang dipelajari?</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li><b>Bahasa DART:</b> Mengenal "bahasa" untuk memberi perintah pada Flutter, seperti variabel, kondisi, dan perulangan.</li>
+                            <li><b>Konsep Widget:</b> Memahami bahwa semua di layar (tombol, teks, gambar) adalah Widget, layaknya balok LEGO.</li>
+                            <li><b>Instalasi:</b> Menyiapkan "bengkel kerja" di laptop Anda (Flutter SDK, Editor Kode, Emulator).</li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                            <p class="font-bold text-blue-800">🎯 Target: Bisa membuat aplikasi sederhana bertuliskan "Halo Dunia!".</p>
+                        </div>
+                    </div>
+                    <div id="content-2" class="content-panel hidden">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Level 2: Mulai Membangun "Rumah" Aplikasi</h3>
+                        <p class="text-slate-500 italic mb-4">"Setelah punya bahan, sekarang kita tata letak ruangan: mana ruang tamu, mana kamar tidur."</p>
+                        <h4 class="font-semibold text-lg mb-2">Apa yang dipelajari?</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li><b>Layouting:</b> Belajar menyusun Widget agar rapi menggunakan `Row`, `Column`, dan `Stack`.</li>
+                            <li><b>State Management (Dasar):</b> Mengerti cara aplikasi "mengingat" data, contohnya saat sebuah angka bertambah setelah tombol ditekan (`setState`).</li>
+                            <li><b>Navigasi:</b> Membuat "pintu" agar pengguna bisa berpindah dari satu halaman ke halaman lain.</li>
+                        </ul>
+                         <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                            <p class="font-bold text-blue-800">🎯 Target: Membuat aplikasi sederhana dengan beberapa halaman (misal: daftar tugas atau kalkulator).</p>
+                        </div>
+                    </div>
+                    <div id="content-3" class="content-panel hidden">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Level 3: Menjadi Arsitek Aplikasi</h3>
+                        <p class="text-slate-500 italic mb-4">"Rumah kita sudah jadi. Sekarang kita pasang listrik, internet, dan pipa air."</p>
+                        <h4 class="font-semibold text-lg mb-2">Apa yang dipelajari?</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li><b>Koneksi Internet (API):</b> Belajar cara aplikasi mengambil data dari internet, seperti berita atau cuaca.</li>
+                            <li><b>State Management Lanjutan:</b> Menggunakan pola yang lebih canggih (BLoC, Provider, GetX) untuk aplikasi yang kompleks.</li>
+                            <li><b>Database Lokal:</b> Menyimpan data di HP pengguna agar tidak hilang saat aplikasi ditutup.</li>
+                        </ul>
+                         <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                            <p class="font-bold text-blue-800">🎯 Target: Mampu membuat aplikasi yang datanya dinamis dari internet (misal: aplikasi berita atau katalog produk).</p>
+                        </div>
+                    </div>
+                    <div id="content-4" class="content-panel hidden">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Level 4: Menuju Puncak Keahlian</h3>
+                        <p class="text-slate-500 italic mb-4">"Menjadi mandor yang memastikan rumahnya tidak hanya bagus, tapi juga kuat, efisien, dan punya fitur-fitur canggih."</p>
+                        <h4 class="font-semibold text-lg mb-2">Apa yang dipelajari?</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-600">
+                            <li><b>Testing:</b> Menguji aplikasi secara otomatis untuk memastikan tidak ada error dan semua berfungsi sesuai harapan.</li>
+                            <li><b>Optimasi Performa:</b> Membuat aplikasi berjalan lebih cepat, lebih hemat baterai, dan lebih mulus.</li>
+                            <li><b>Animasi Keren:</b> Menambahkan gerakan-gerakan halus untuk mempercantik tampilan dan pengalaman pengguna.</li>
+                            <li><b>Integrasi Kode Asli (Native):</b> Menghubungkan Flutter dengan fitur spesifik Android/iOS saat dibutuhkan.</li>
+                        </ul>
+                         <div class="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                            <p class="font-bold text-blue-800">🎯 Target: Siap bekerja profesional, merancang arsitektur aplikasi yang solid, dan berkontribusi ke proyek besar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Section: Kunci Sukses -->
+            <section id="success" class="mb-12 md:mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8 text-slate-800">Resep Rahasia Cepat Bisa</h2>
+                <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">📅 Konsisten</h3>
+                        <p class="text-slate-600">Belajar 1 jam setiap hari jauh lebih baik daripada 7 jam hanya di hari Minggu. Momentum adalah kunci.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">💻 Praktek, Praktek, Praktek</h3>
+                        <p class="text-slate-600">Jangan hanya menonton tutorial. Ketik ulang kodenya, ubah, dan lihat apa yang terjadi. *Coding is a sport!*</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">🚀 Bangun Proyek Pribadi</h3>
+                        <p class="text-slate-600">Buat aplikasi impianmu, sekecil apapun. Ini adalah guru terbaik karena kamu akan termotivasi mencari solusi.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">🤝 Gabung Komunitas</h3>
+                        <p class="text-slate-600">Jangan malu bertanya. Di grup (Telegram, Discord) banyak developer lain yang siap membantu.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center text-slate-500 pt-8 border-t border-slate-200">
+            <p>&copy; 2025 Peta Jalan Flutter Interaktif. Dibuat untuk mempermudah perjalanan belajar Anda.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const roadmapItems = document.querySelectorAll('.roadmap-item');
+            const contentPanels = document.querySelectorAll('.content-panel');
+            const roadmapNodes = document.querySelectorAll('.roadmap-node');
+
+            function showContent(level) {
+                contentPanels.forEach(panel => {
+                    if (panel.id === `content-${level}`) {
+                        panel.classList.remove('hidden');
+                        setTimeout(() => panel.style.opacity = 1, 50);
+                    } else {
+                        panel.style.opacity = 0;
+                        setTimeout(() => panel.classList.add('hidden'), 500);
+                    }
+                });
+
+                roadmapNodes.forEach(node => {
+                    if (node.parentElement.dataset.level === level) {
+                        node.classList.add('active');
+                    } else {
+                        node.classList.remove('active');
+                    }
+                });
+            }
+
+            roadmapItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const level = item.dataset.level;
+                    showContent(level);
+                });
+            });
+
+            // Show first level by default
+            showContent('1');
+        });
+    </script>
 </body>
 </html>
