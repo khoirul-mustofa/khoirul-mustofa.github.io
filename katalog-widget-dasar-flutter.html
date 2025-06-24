@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Widget Dasar Flutter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Grays with Green Accent -->
+    <!-- Application Structure Plan: Halaman ini dirancang sebagai katalog visual satu halaman (single page) yang berdiri sendiri. Strukturnya menggunakan grid responsif untuk menampilkan setiap widget dalam "kartu" informasi yang terisolasi. Pendekatan ini dipilih agar pengguna dapat dengan cepat memindai, membandingkan, dan memahami berbagai widget dasar tanpa harus menavigasi menu atau halaman yang kompleks. Setiap kartu menyajikan informasi lengkap—deskripsi, kode, dan pratinjau visual—secara ringkas, menjadikannya referensi yang efisien bagi pemula. -->
+    <!-- Visualization & Content Choices: 
+        - Grid Kartu Widget: Goal=Inform/Compare. Method=HTML/CSS Grid. Interaction=Tidak ada (fokus pada penyajian informasi). Justification=Tata letak kartu adalah cara standar dan efektif untuk menampilkan item katalog, memungkinkan perbandingan yang mudah dan pemindaian cepat.
+        - Pratinjau Visual (HTML/CSS): Goal=Inform. Method=Div yang ditata dengan HTML/CSS untuk meniru tampilan widget Flutter. Justification=Memberikan representasi visual instan dari kode, yang sangat penting untuk memahami konsep UI, tanpa memerlukan rendering kanvas yang sebenarnya.
+        - Cuplikan Kode: Goal=Inform. Method=Tag `<pre>` dengan gaya khusus. Justification=Menyajikan kode dengan cara yang mudah dibaca dan dapat disalin, yang merupakan kebutuhan inti bagi developer.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .widget-card {
+            background-color: white;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .widget-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px 0 rgba(0,0,0,0.08);
+        }
+        .code-snippet {
+            background-color: #1f2937; /* gray-800 */
+            color: #d1d5db; /* gray-300 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .widget-preview {
+            background-color: #f9fafb; /* gray-50 */
+            border-top: 1px solid #e5e7eb; /* gray-200 */
+            padding: 1.5rem;
+            border-radius: 0 0 0.75rem 0.75rem;
+            margin-top: auto; /* Pushes preview to the bottom */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-10 md:py-16">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-3">Katalog Widget Dasar Flutter</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Referensi cepat untuk memahami blok bangunan fundamental dalam Flutter. Semua yang Anda lihat di aplikasi Flutter adalah Widget.</p>
+        </header>
+
+        <main class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Widget Card: Container -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">Container</h2>
+                    <p class="text-gray-600 mb-4">Sebuah "kotak" serbaguna yang bisa diatur ukuran, warna, padding, dan dekorasinya. Fondasi untuk banyak layout.</p>
+                    <pre class="code-snippet"><code>Container(
+  padding: EdgeInsets.all(16),
+  color: Colors.teal[300],
+  child: Text('Box'),
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <div class="bg-teal-400 text-white font-bold px-8 py-4 rounded-lg shadow-inner">Box</div>
+                </div>
+            </div>
+
+            <!-- Widget Card: Text -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">Text</h2>
+                    <p class="text-gray-600 mb-4">Widget paling esensial untuk menampilkan tulisan. Gayanya bisa diubah sesuai kebutuhan.</p>
+                    <pre class="code-snippet"><code>Text(
+  'Halo, Flutter!',
+  style: TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  ),
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <p class="text-xl font-bold text-gray-800">Halo, Flutter!</p>
+                </div>
+            </div>
+
+            <!-- Widget Card: Column & Row -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">Column & Row</h2>
+                    <p class="text-gray-600 mb-4">Menyusun widget-widget lain dalam barisan vertikal (Column) atau horizontal (Row).</p>
+                    <pre class="code-snippet"><code>// Menyusun ke bawah
+Column(
+  children: [
+    Text('Atas'),
+    Text('Bawah'),
+  ],
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="bg-gray-200 px-4 py-1 rounded mb-2">Atas</div>
+                        <div class="bg-gray-200 px-4 py-1 rounded">Bawah</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Widget Card: ElevatedButton -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">ElevatedButton</h2>
+                    <p class="text-gray-600 mb-4">Tombol standar dengan efek terangkat (shadow) yang merespon ketika ditekan oleh pengguna.</p>
+                    <pre class="code-snippet"><code>ElevatedButton(
+  onPressed: () {
+    // Aksi ketika ditekan
+  },
+  child: Text('Tekan Saya'),
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <button class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition-colors">Tekan Saya</button>
+                </div>
+            </div>
+
+            <!-- Widget Card: Icon -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">Icon</h2>
+                    <p class="text-gray-600 mb-4">Menampilkan sebuah gambar ikon dari koleksi Material Design yang sudah disediakan oleh Flutter.</p>
+                    <pre class="code-snippet"><code>Icon(
+  Icons.favorite,
+  color: Colors.pink,
+  size: 48,
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <span class="text-pink-500" style="font-size: 48px; line-height: 1;">♥</span>
+                </div>
+            </div>
+
+            <!-- Widget Card: Stack -->
+            <div class="widget-card">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-900">Stack</h2>
+                    <p class="text-gray-600 mb-4">Memungkinkan Anda untuk menumpuk widget di atas widget lainnya. Sangat berguna untuk layout kompleks.</p>
+                    <pre class="code-snippet"><code>Stack(
+  children: [
+    Container(width: 100, height: 100, color: Colors.red),
+    Text('Tumpukan'),
+  ],
+)</code></pre>
+                </div>
+                <div class="widget-preview">
+                    <div class="relative w-28 h-28">
+                        <div class="absolute inset-0 bg-red-400 rounded-lg"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-white font-bold">Tumpukan</div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer class="text-center text-gray-500 mt-16 pt-8 border-t border-gray-200">
+            <p>&copy; 2025 Dibuat oleh Khoirul Mustofa. Referensi cepat untuk memulai perjalanan Flutter Anda.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

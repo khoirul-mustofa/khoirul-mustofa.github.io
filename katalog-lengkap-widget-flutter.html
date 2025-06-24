@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Lengkap Widget Flutter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- PrismJS Theme for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- Chosen Palette: Grays with multi-color accents per category -->
+    <!-- Application Structure Plan: A comprehensive, categorized, single-page reference guide. The page is structured into logical sections based on widget functionality (Basic, Layout, Input, etc.). This categorized approach was chosen because it mirrors how a developer thinks and searches for widgets, making it a highly intuitive and efficient learning tool. A user can scroll through or focus on a specific category (e.g., "Layout") to master related widgets together. -->
+    <!-- Visualization & Content Choices: 
+        - Widget Cards: Goal=Inform/Compare. Method=A responsive grid of styled `div` cards. Each card contains a description, a code snippet with syntax highlighting, and a visual HTML/CSS simulation of the widget. Justification=This card-based catalog format is ideal for presenting a large amount of discrete information in a digestible, scannable way. The visual preview is essential for bridging the gap between abstract code and concrete UI.
+        - Category Sections: Goal=Organize. Method=Semantic `<section>` tags with distinct titles. Justification=Grouping widgets by category provides a clear information architecture, preventing the user from being overwhelmed by a long, unstructured list.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* slate-50 */
+        }
+
+        .widget-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom styles for PrismJS code blocks */
+        .code-snippet {
+            padding: 1rem !important;
+            margin: 0;
+            font-size: 0.875rem !important;
+            line-height: 1.6 !important;
+            white-space: pre-wrap !important;
+            font-family: 'SF Mono', 'Courier New', Courier, monospace;
+        }
+
+        /* Overriding PrismJS default background and border radius */
+        pre[class*="language-"] {
+            border-radius: 0.5rem !important;
+            background: #1e293b !important;
+            /* slate-800 */
+        }
+
+        .visual-preview {
+            background-color: #f8fafc;
+            /* slate-50 */
+            border-top: 1px solid #e2e8f0;
+            /* slate-200 */
+            padding: 1rem;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-4">Katalog Lengkap Widget Flutter</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">Panduan visual untuk widget-widget paling
+                esensial yang dikelompokkan berdasarkan kategori.</p>
+        </header>
+
+        <!-- Kategori: Widget Dasar -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-blue-500">Dasar</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Container</h3>
+                        <p class="text-slate-600 text-sm mb-4">Kotak serbaguna untuk menata, memberi dekorasi, dan
+                            mengatur jarak.</p>
+                        <pre class="code-snippet"><code class="language-dart">Container(
+  height: 80,
+  width: 80,
+  color: Colors.blue,
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="w-20 h-20 bg-blue-500 rounded-md"></div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Text</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menampilkan string teks dengan berbagai gaya.</p>
+                        <pre class="code-snippet"><code class="language-dart">Text(
+  'Halo Dunia!',
+  style: TextStyle(fontSize: 18),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <p class="text-lg">Halo Dunia!</p>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Icon</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menampilkan ikon grafis dari set Material Design.</p>
+                        <pre class="code-snippet"><code class="language-dart">Icon(
+  Icons.home,
+  size: 40,
+  color: Colors.blue,
+)</code></pre>
+                    </div>
+                    <div class="visual-preview"><span class="text-blue-500 text-4xl">🏠</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Layout -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-violet-500">Layout</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Column & Row</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menyusun widget lain secara vertikal (Column) atau
+                            horizontal (Row).</p>
+                        <pre class="code-snippet"><code class="language-dart">Row(
+  children: [ Icon(..), Text(..) ],
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="flex items-center space-x-2 bg-violet-100 p-2 rounded-lg">
+                            <span class="text-violet-600 text-2xl">★</span>
+                            <span class="text-violet-800">Bintang</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Stack</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menumpuk widget di atas satu sama lain. Berguna untuk
+                            notifikasi atau overlay.</p>
+                        <pre class="code-snippet"><code class="language-dart">Stack(
+  children: [ ..., Badge() ],
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="relative">
+                            <span class="text-violet-500 text-5xl">🔔</span>
+                            <div
+                                class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                                3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Expanded</h3>
+                        <p class="text-slate-600 text-sm mb-4">Membuat widget anak dari Row/Column mengisi sisa ruang
+                            yang tersedia.</p>
+                        <pre class="code-snippet"><code class="language-dart">Row(
+  children: [ ..., Expanded(...) ],
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <div class="flex w-full bg-violet-100 p-1 rounded-lg">
+                            <div class="bg-violet-400 p-2 rounded-l-md text-white text-sm">Fix</div>
+                            <div class="bg-violet-600 p-2 rounded-r-md text-white text-sm flex-grow text-center">
+                                Expanded</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Scaffold</h3>
+                        <p class="text-slate-600 text-sm mb-4">Struktur layout visual dasar untuk aplikasi Material
+                            Design, menyediakan AppBar, body, dll.</p>
+                        <pre class="code-snippet"><code class="language-dart">Scaffold(
+  appBar: AppBar(title: Text('Judul')),
+  body: Center(child: Text('Isi')),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <div class="w-full h-32 border-2 border-slate-300 rounded-lg flex flex-col">
+                            <div class="bg-violet-600 text-white text-sm p-2 rounded-t-md">AppBar</div>
+                            <div class="flex-grow flex items-center justify-center text-slate-500">Body</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Card</h3>
+                        <p class="text-slate-600 text-sm mb-4">Sebuah panel Material Design dengan sudut sedikit
+                            membulat dan bayangan.</p>
+                        <pre class="code-snippet"><code class="language-dart">Card(
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Text('Konten Kartu'),
+  ),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="bg-white shadow-lg rounded-lg border border-slate-200 p-4">Konten Kartu</div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">ListView</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menampilkan daftar item yang dapat digulir (scrollable).
+                            Sangat efisien untuk daftar panjang.</p>
+                        <pre class="code-snippet"><code class="language-dart">ListView.builder(
+  itemCount: 3,
+  itemBuilder: (ctx, i) => ListTile(..),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <div class="w-full h-32 border-2 border-slate-300 rounded-lg p-2 space-y-1 overflow-hidden">
+                            <div class="bg-violet-100 p-1 rounded text-sm text-violet-800">List Item 1</div>
+                            <div class="bg-violet-100 p-1 rounded text-sm text-violet-800">List Item 2</div>
+                            <div class="bg-violet-100 p-1 rounded text-sm text-violet-800">List Item 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Input -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-green-500">Input & Seleksi</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">ElevatedButton</h3>
+                        <p class="text-slate-600 text-sm mb-4">Tombol standar dengan bayangan yang merespon klik
+                            pengguna.</p>
+                        <pre class="code-snippet"><code class="language-dart">ElevatedButton(
+  onPressed: () {},
+  child: Text('Klik'),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview"><button
+                            class="bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md">Klik</button>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">TextField</h3>
+                        <p class="text-slate-600 text-sm mb-4">Kolom input teks yang memungkinkan pengguna mengetik
+                            menggunakan keyboard.</p>
+                        <pre class="code-snippet"><code class="language-dart">TextField(
+  decoration: InputDecoration(
+    labelText: 'Nama Anda',
+  ),
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <input type="text" placeholder="Nama Anda"
+                            class="w-full border-2 border-slate-300 rounded-lg p-2 focus:border-green-500 outline-none" />
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Switch</h3>
+                        <p class="text-slate-600 text-sm mb-4">Tombol on/off untuk mengubah satu pengaturan.</p>
+                        <pre class="code-snippet"><code class="language-dart">Switch(
+  value: true,
+  onChanged: (val) {},
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                            <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Checkbox</h3>
+                        <p class="text-slate-600 text-sm mb-4">Kotak centang untuk memilih satu atau beberapa opsi dari
+                            sebuah set.</p>
+                        <pre class="code-snippet"><code class="language-dart">Checkbox(
+  value: true,
+  onChanged: (val) {},
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="w-6 h-6 bg-green-500 rounded-md flex items-center justify-center text-white">
+                            <span class="text-lg">✓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Slider</h3>
+                        <p class="text-slate-600 text-sm mb-4">Memungkinkan pemilihan nilai dari rentang tertentu dengan
+                            menggeser.</p>
+                        <pre class="code-snippet"><code class="language-dart">Slider(
+  value: 0.5,
+  onChanged: (val) {},
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <div class="w-full h-2 bg-slate-200 rounded-full relative">
+                            <div class="w-1/2 h-2 bg-green-500 rounded-l-full"></div>
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 bg-green-500 rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori: Menampilkan Info -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2 border-amber-500">Menampilkan Info</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Image</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menampilkan gambar dari berbagai sumber (network, asset,
+                            file).</p>
+                        <pre class="code-snippet"><code class="language-dart">Image.network(
+  'https://placehold.co/400'
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <img src="https://placehold.co/100x100/eab308/ffffff?text=Image" alt="Placeholder Image"
+                            class="w-24 h-24 rounded-lg object-cover bg-amber-200" />
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CircleAvatar</h3>
+                        <p class="text-slate-600 text-sm mb-4">Sebuah lingkaran yang biasanya digunakan untuk
+                            menampilkan gambar profil atau inisial.</p>
+                        <pre class="code-snippet"><code class="language-dart">CircleAvatar(
+  backgroundImage: NetworkImage(..),
+  radius: 30,
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div
+                            class="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center text-white text-xl font-bold">
+                            KM</div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Chip</h3>
+                        <p class="text-slate-600 text-sm mb-4">Elemen ringkas yang merepresentasikan input, atribut,
+                            atau aksi. Sering digunakan untuk filter atau tag.</p>
+                        <pre class="code-snippet"><code class="language-dart">Chip(
+  label: Text('Tag Populer'),
+  backgroundColor: Colors.amber,
+)</code></pre>
+                    </div>
+                    <div class="visual-preview">
+                        <div class="bg-amber-400 text-amber-900 font-semibold px-4 py-1 rounded-full text-sm">Tag
+                            Populer</div>
+                    </div>
+                </div>
+                <div class="widget-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">LinearProgressIndicator</h3>
+                        <p class="text-slate-600 text-sm mb-4">Menunjukkan progress dalam bar horizontal. Bisa tak
+                            terbatas (indeterminate) atau berdasarkan nilai.</p>
+                        <pre class="code-snippet"><code class="language-dart">LinearProgressIndicator(
+  value: 0.7, // 70%
+)</code></pre>
+                    </div>
+                    <div class="visual-preview w-full">
+                        <div class="w-full h-2 bg-slate-200 rounded-full">
+                            <div class="w-[70%] h-2 bg-amber-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center text-slate-500 mt-8 py-8 border-t border-slate-200">
+        <p>Dibuat oleh Khoirul Mustofa</p>
+    </footer>
+
+    <!-- PrismJS Scripts for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+</body>
+
+</html>
